@@ -1,5 +1,3 @@
-
-
 const startButton =
     document.getElementById("startButton");
 
@@ -11,6 +9,9 @@ const welcomeCard =
 
 const pianoUI =
     document.getElementById("pianoUI");
+
+const connectionStatus =
+    document.getElementById("connectionStatus");
 
 const core =
     document.querySelector(".implosion-core");
@@ -252,13 +253,11 @@ let startmoment = null;
 
 let katorbity = 0;
 
-let orbitSpeed =
-    config.inispeed;
+let orbitSpeed = config.inispeed;
 
 let orbitskala = 1;
 
-let lastTime =
-    performance.now();
+let lastTime = performance.now();
 
 let impactStarted = false;
 
@@ -292,6 +291,9 @@ function clamp(
     );
 }
 
+let IntroSound1 = new Audio("assets/introMusic/FirstIntroSound.mp3");
+let IntroSound2 = new Audio("assets/introMusic/trueSecondsound.mp3");
+
 function updateLights(now) {
 
     if (
@@ -299,6 +301,7 @@ function updateLights(now) {
     ) {
         return;
     }
+    IntroSound1.play();
 
     const deltaTime =
         Math.min(
@@ -357,9 +360,7 @@ function updateLights(now) {
 
     else {
 
-        const collapseElapsed =
-            elapsed -
-            config.accelduration;
+        const collapseElapsed = elapsed - config.accelduration;
 
         const progress =
             clamp(
@@ -389,7 +390,7 @@ function updateLights(now) {
         ) {
 
             beginImpact();
-
+            IntroSound2.play();
             lastTime = now;
 
             return;
@@ -517,30 +518,7 @@ function updateBlobTransforms() {
                 }
             }
 
-            function getNearestPianoSample(
-                midi
-            ) {
-
-                return Object.values(
-                    pianoSamples
-                ).reduce(
-                    (nearest, sample) => {
-
-                        if (!nearest) {
-                            return sample;
-                        }
-
-                        return Math.abs(
-                            sample.midi - midi
-                        ) < Math.abs(
-                            nearest.midi - midi
-                        )
-                            ? sample
-                            : nearest;
-                    },
-                    null
-                );
-            }
+            
 
             function playPianoNote(
                 midi,
@@ -1833,21 +1811,11 @@ function updateFallingNotes(
 
 const FIRST_MIDI_NOTE = 21;
 const LAST_MIDI_NOTE = 108;
-
-const activeNotes =
-    new Map();
-
-const activeVoices =
-    new Map();
-
-const minimumNoteDuration =
-    0.14;
-
-const noteReleaseDuration =
-    0.32;
-
-const noteReleaseQuietPoint =
-    0.30;
+const activeNotes = new Map();
+const activeVoices = new Map();
+const minimumNoteDuration = 0.14;
+const noteReleaseDuration = 0.32;
+const noteReleaseQuietPoint = 0.30;
 
 const sustainedNotes =
     new Map();
@@ -1954,8 +1922,7 @@ function createPiano() {
 
     whiteIndex = 0;
 
-    const blackWidth =
-        whiteWidth * 0.62;
+    const blackWidth = whiteWidth * 0.62;
 
     for (
         let midi =
@@ -1964,8 +1931,7 @@ function createPiano() {
         midi++
     ) {
 
-        const pitchClass =
-            midi % 12;
+        const pitchClass = midi % 12;
 
         if (
             blackPitchClasses.has(
@@ -2518,13 +2484,14 @@ midiYes.addEventListener(
             console.log(
                 "MIDI access so generously granted:",
             );
+            midiStatus.textContent =
+                "Piano ready yay";
 
             connectMIDI(
                 midiAccess
             );
-
             showMidiToast(
-                "Connected, nice"
+                "Wise choice"
 
             );
 
@@ -2538,7 +2505,7 @@ midiYes.addEventListener(
             );
 
             midiStatus.textContent =
-                "MIDI unavailable, skill issue";
+                "no MIDI piano , skill issue";
 
             connectionIndicator.classList.remove(
                 "connected"
@@ -2558,11 +2525,14 @@ midiNo.addEventListener(
         popup.classList.remove(
             "active"
         );
-
+        midiStatus.textContent =
+            "Piano will never be ready :(";
         popup.setAttribute(
             "aria-hidden",
             "true"
         );
+
+        showMidiToast("MIDI access not granted, why");
     }
 );
 
@@ -2590,6 +2560,10 @@ function connectMIDI(
 
         midiStatus.textContent =
             "MIDI connected";
+
+        midiStatus.classList.add(
+            "connected"
+        );
 
         connectionIndicator.classList.add(
             "connected"
