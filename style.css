@@ -12,33 +12,24 @@ body {
 
 body {
     overflow: hidden;
-
-    font-family: Arial, sans-serif;
-
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: #030308;
-
     color: white;
 }
 
 .screen1 {
     position: relative;
-
     width: 100vw;
     height: 100vh;
-
     overflow: hidden;
-
     isolation: isolate;
 }
 
 .background {
     position: absolute;
     inset: 0;
-
     overflow: hidden;
-
     --backgroundbrightness: 1;
-
     background:
         radial-gradient(
             circle at 50% 48%,
@@ -50,17 +41,13 @@ body {
 }
 
 .background::after {
-    content: "";
-
     position: absolute;
     inset: -30%;
-
     z-index: 1;
-
     background:
         radial-gradient(
             circle at center,
-            rgba(110, 48, 180, 0.25) 0%,
+            rgba(110, 48, 180, 0.25) 7%,
             rgba(50, 20, 80, 0.10) 32%,
             transparent 65%
         );
@@ -165,11 +152,13 @@ body {
 .glow4,
 .glow5,
 .glow6,
-.glow7 {
+.glow7 
+
+{
     --blobsize:
         min(20vw, 270px);
 }
-
+/* MY WORK */
 .glow1 {
     background:
         radial-gradient(
@@ -202,7 +191,7 @@ body {
             transparent 72%
         );
 }
-
+/* ai because im too lazy to change all the colors myself*/
 .glow4 {
     background:
         radial-gradient(
@@ -224,7 +213,6 @@ body {
             transparent 72%
         );
 }
-
 .glow6 {
     background:
         radial-gradient(
@@ -246,6 +234,17 @@ body {
             transparent 72%
         );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .background.post-impact .swiec {
     opacity: 0 !important;
@@ -598,7 +597,7 @@ h1 {
 }
 
 .headtekst {
-    font-size: 14px;
+    font-size: 17px;
 
     font-weight: 700;
 
@@ -611,7 +610,7 @@ h1 {
 
     text-shadow:
         0 0 10px
-        rgba(210, 169, 255, 0.7);
+        rgba(229, 208, 251, 0.7);
 }
 
 .topInfo {
@@ -656,8 +655,6 @@ h1 {
     
 }
 
-
-
 .connection-indicator {
     width: 7px;
     height: 7px;
@@ -700,10 +697,11 @@ h1 {
 
 .hud-actions {
     display: flex;
-
     align-items: center;
-
-    gap: 6px;
+    gap: 8px;
+}
+#topTekst {
+    cursor: pointer;
 }
 
 .hud-actions button {
@@ -1346,9 +1344,12 @@ h1 {
         gap: 8px;
     }
 
-    .connectionStatus {
-        display: none;
-    }
+ .connectionStatus {
+    margin-left: auto;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+}
 
     .visualizer {
         inset: 62px;
@@ -1402,6 +1403,57 @@ h1 {
         transition-duration:
             0.01ms !important;
     }
+}
+
+.sample-loader {
+    position: fixed;
+    top: 22px;
+    left: 50%;
+    z-index: 2137;
+    width: min(240px, calc(100vw - 32px));
+    padding: 12px 14px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(24, 17, 44, 0.88), rgba(11, 25, 42, 0.82));
+    backdrop-filter: blur(16px) saturate(130%);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28), 0 0 24px rgba(135, 96, 255, 0.12);
+    opacity: 1;
+    transform: translate(-50%, 0);
+    transition: opacity 260ms ease, visibility 260ms ease, transform 260ms ease;
+    pointer-events: none;
+}
+
+.sample-loader.complete {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -8px);
+}
+
+.sample-loader-text {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.74);
+}
+
+.sample-loader-track {
+    height: 4px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sample-loader-bar {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #8d6cff, #71d8ff);
+    box-shadow: 0 0 12px rgba(113, 216, 255, 0.6);
+    transition: width 160ms ease;
 }
 
 .app-windows {
@@ -1680,25 +1732,11 @@ h1 {
 }
 
 .metronomeBpm {
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 18px;
-}
-
-.metronomeBpm {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
 }
 
 .metronomeBpmValue {
@@ -1930,29 +1968,6 @@ h1 {
     min-height: 290px;
 }
 
-@media (max-width: 800px) {
-
-    .app-window {
-
-        width:
-            calc(100vw - 30px);
-
-        max-width:
-            420px;
-    }
-
-    #notepadWindow,
-    #metronomeWindow {
-
-        left: 50%;
-
-        top: 50%;
-
-        width:
-            calc(100vw - 30px);
-    }
-}
-
 .appDock {
     position: fixed;
 
@@ -1980,7 +1995,6 @@ h1 {
 
     backdrop-filter:
         blur(16px);
-
     box-shadow:
         0 15px 40px
         rgba(0,0,0,0.30);
@@ -2128,3 +2142,30 @@ h1 {
 
     cursor: pointer;
 }
+.piano-hud {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+}
+
+.piano-hud .headtekst {
+    grid-column: 1;
+}
+
+.piano-hud .topInfo {
+    grid-column: 2;
+    justify-self: center;
+}
+
+.piano-hud .connectionStatus {
+    grid-column: 3;
+    justify-self: end;
+    margin-right: 14px;
+}
+
+.piano-hud .hud-actions {
+    grid-column: 4;
+    justify-self: end;
+}
+/* yeah, done some random things to hold it stable, it's like putting duct tape on a trainrack
+this seriously need to be remade because daaamn */

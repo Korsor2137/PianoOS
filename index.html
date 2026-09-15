@@ -18,6 +18,22 @@
 
 <body>
 
+    <div id="pianoSampleLoader" class="sample-loader">
+
+    <div class="sample-loader-text">
+        <span>Piano samples</span>
+        <span id="sampleLoaderPercent">0%</span>
+    </div>
+
+    <div class="sample-loader-track">
+        <div id="sampleLoaderBar" class="sample-loader-bar"></div>
+    </div>
+</div>
+
+
+
+
+
 <main class="screen1">
 
     <div
@@ -93,7 +109,7 @@
 
     <section class="pianoUI" id="pianoUI"
     >
-        <div class="appWindows" id="appWindows">
+        <div class="appWindows" id="appWindows"> <!-- ***************** emojis copied from https://emojidb.org/ ******************-->
 
         <section class="appWin" id="NotepadWin" data-app="Notepad">
             <header class="appWinTitlebar">
@@ -199,7 +215,7 @@
                                         >
 
                                     </div>
-
+                                    <!-- copy pastes btw-->
                                     <div class="setting-row">
 
                                         <div class="setting-info">
@@ -207,13 +223,12 @@
                                             <span>
                                                 Metronome
                                             </span>
-
                                             <small>
                                                 Metronome click volume
                                             </small>
 
                                         </div>
-
+                                        
                                         <input
                                             id="metronomeVolume"
                                             type="range"
@@ -279,8 +294,8 @@
 
             <div class="topInfo">
 
-                <span id="topTekst">
-                    Your Workspace
+                <span id="topTekst"> <!-- customize to your will-->
+                    CLICK MEEEEEEEEEEEEEE
                 </span>
                 <span class="hud-separator">
                     •
@@ -291,8 +306,7 @@
                 </span>
 
             </div>
-
-            <div class="hud-right">
+                
 
                 <div class="connectionStatus">
 
@@ -313,6 +327,7 @@
                         id="playButton"
                         type="button"
                         aria-label="Play"
+                        title="does nothing yet lol"
                     >
                         ▶
                     </button>
@@ -320,6 +335,7 @@
                         id="stopButton"
                         type="button"
                         aria-label="Stop"
+                        title="does nothing yet lol"
                     >
                         ■
                     </button>
@@ -327,6 +343,7 @@
                         id="recordButton"
                         type="button"
                         aria-label="Record"
+                        title="does nothing yet lol"
                     >
                         ●
                     </button>
@@ -336,6 +353,7 @@
                         type="button"
                         aria-label="Hide virtual keyboard"
                         aria-pressed="false"
+                        title="Hide Piano"
                     >
                         ▼
                     </button>
@@ -352,9 +370,7 @@
         class="dockButton"
         id="openNotepad"
         type="button"
-        title="Notepad"
-    >
-        📝
+        title="Notepad" > 📝
     </button>
 
     <button
@@ -362,8 +378,7 @@
         id="openMetronome"
         type="button"
         title="Metronome"
-    >
-        ♫
+    > ♫
     </button>
 
     <button
@@ -371,12 +386,11 @@
         id="openSettings"
         type="button"
         title="Settings"
-    >
-        ⚙
+    > ⚙
     </button>
 
 </aside>
-
+        
         <div
             class="visualizer"
             id="visualizer"
@@ -385,10 +399,10 @@
             <div class="visualizer-grid"></div>
 
             <canvas
-                id="noteCanvas"
+                id="nutki"
                 aria-hidden="true"
             ></canvas>
-
+            <!-- kiedyś, kiedyś...-->
         </div>
 
         <canvas
