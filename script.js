@@ -138,6 +138,96 @@ const audioStateMoje = {
 
 //keyboard to piano wowwww
 
+
+
+
+const keyboardMap = {
+
+     q: 57,
+    2: 58, 
+    w: 59, 
+    e: 60,
+    4: 61,
+    r: 62,
+    5: 63,
+    t: 64,
+    y: 65,
+    7: 66,
+    u: 67,
+    8: 68,
+    i: 69,
+    9: 70,
+    o: 71,
+    p: 72,
+    "-": 73,
+    "[": 74,
+    "=": 75,
+    "]": 76,
+
+    "'": 56,
+    "/": 55,
+    ";": 54,
+    ".": 53,
+    ",": 52,
+    k: 51,
+    m: 50,
+    j: 49,
+    n: 48,
+    b: 47,
+    g: 46,
+    v: 45,
+    f: 44,
+    c: 43,
+    d: 42,
+    x: 41,
+    z: 40
+
+
+};
+
+const capsKeyboardMap = {
+    q: 45,  
+    2: 46, 
+    w: 47, 
+    e: 48,
+    4: 49,
+    r: 50,
+    5: 51,
+    t: 52,
+    y: 53,
+    7: 54,
+    u: 55,
+    8: 56,
+    i: 57,
+    9: 58,
+    o: 59,
+    p: 60,
+    "-": 61,
+    "[": 62,
+    "=": 63,
+    "]": 64,
+
+    "'": 44,
+    "/": 43,
+    ";": 42,
+    ".": 41,
+    ",": 40,
+    k: 39,
+    m: 38,
+    j: 37,
+    n: 36,
+    b: 35,
+    g: 34,
+    v: 33,
+    f: 32,
+    c: 31,
+    d: 30,
+    x: 29,
+    z: 28
+
+};
+
+/* old settings
 const keyboardMap = {
     q: 59, //only exists to play still dre loolololololol
     a: 60, //60 = C4, change to your liking
@@ -184,7 +274,7 @@ const capsKeyboardMap = {
     "'": 65
 
 };
-
+*/
 //piano sustain configs
 
 
@@ -2763,10 +2853,13 @@ function handleMIDIMessage(
 
 
 
-    if (
+    if 
+    (
         !data ||
         data.length < 3
-    ) {
+    ) 
+
+    {
         return;
     }
 
@@ -2774,7 +2867,7 @@ function handleMIDIMessage(
         status,
         note,
         velocity
-    ] = data;
+        ] = data;
 
 
     const command =
@@ -2783,10 +2876,12 @@ function handleMIDIMessage(
 
 
 
-    if (
+    if 
+    (
         command === 0xb0 &&
         note === 64
-    ) {
+    ) 
+    {
 
         const pedalDown =
             velocity >= 64;
@@ -2794,18 +2889,22 @@ function handleMIDIMessage(
 
 
 
-        if (
+        if 
+        (
             pedalDown !==
             sustainPedalDown
-        ) {
+        ) 
+        {
 
             sustainPedalDown =
                 pedalDown;
 
 
-            if (
+            if 
+            (
                 !pedalDown
-            ) {
+            )
+            {
 
                 releaseSustainedNotes();
             }
@@ -2819,10 +2918,12 @@ function handleMIDIMessage(
 
 
 
-    if (
+    if 
+    (
         command === 0x90 &&
         velocity > 0
-    ) {
+    ) 
+    {
 
         noteOn(
             note,
@@ -2838,13 +2939,15 @@ function handleMIDIMessage(
 
 
 
-    if (
+    if 
+    (
         command === 0x80 ||
         (
             command === 0x90 &&
             velocity === 0
         )
-    ) {
+    ) 
+    {
 
         noteOff(
             note, "midi"
@@ -2988,12 +3091,14 @@ function openAppWindow(
         );
 
 
-    if (!windowElement) {
+    if (!windowElement) 
+        {
         return;
-    }
+        }
 
 
-    focusAppWindow(
+    focusAppWindow
+    (
         windowElement
     );
 
@@ -3009,14 +3114,18 @@ function openAppWindow(
 }
 
 
-function closeAppWindow(
+function closeAppWindow
+(
     windowElement,
     resetPosition = false
-) {
+) 
 
-    if (!windowElement) {
+{
+
+    if (!windowElement) 
+        {
         return;
-    }
+        }
 
 
     windowElement.classList.remove(
@@ -3024,9 +3133,11 @@ function closeAppWindow(
     );
 
 
-    if (
+    if 
+    (
         resetPosition
-    ) {
+    ) 
+    {
 
         setTimeout(
             () => {
@@ -3075,12 +3186,11 @@ function focusAppWindow(
 }
 
 
-/*
-    Window dragging
-*/
+//drag race reference?
 
 appWindows.forEach(
-    windowElement => {
+    windowElement => 
+        {
 
         const titlebar =
             windowElement.querySelector(
@@ -3088,59 +3198,54 @@ appWindows.forEach(
             );
 
 
-        if (!titlebar) {
+        if (!titlebar) 
+            {
             return;
-        }
+            }
 
 
-        let dragging =
-            false;
+        let dragging = false;
 
 
-        let offsetX =
-            0;
+        let offsetX = 0;
 
 
-        let offsetY =
-            0;
+        let offsetY = 0;
 
 
-        titlebar.addEventListener(
+        titlebar.addEventListener
+        (
             "pointerdown",
             event => {
 
-                if (
+                if 
+                (
                     event.target.closest(
                         "button"
                     )
-                ) {
+                ) 
+                {
                     return;
                 }
 
 
-                dragging =
-                    true;
+                dragging = true;
 
 
                 const rect =
                     windowElement.getBoundingClientRect();
 
 
-                windowElement.style.left =
-                    `${rect.left}px`;
+                windowElement.style.left = `${rect.left}px`;
 
 
-                windowElement.style.top =
-                    `${rect.top}px`;
+                windowElement.style.top = `${rect.top}px`;
 
 
-                windowElement.style.transform =
-                    "translate(0, 0) scale(1)";
+                windowElement.style.transform = "translate(0, 0) scale(1)";
 
 
-                windowElement.classList.add(
-                    "dragging"
-                );
+                windowElement.classList.add ( "dragging");
 
 
                 offsetX =
@@ -3169,9 +3274,10 @@ appWindows.forEach(
             "pointermove",
             event => {
 
-                if (!dragging) {
+                if (!dragging) 
+                    {
                     return;
-                }
+                    }
 
 
                 const newLeft =
@@ -3184,17 +3290,15 @@ appWindows.forEach(
                     offsetY;
 
 
-                windowElement.style.left =
-                    `${newLeft}px`;
+                windowElement.style.left = `${newLeft}px`;
 
-
-                windowElement.style.top =
-                    `${newTop}px`;
+                windowElement.style.top = `${newTop}px`;
             }
         );
 
 
-        titlebar.addEventListener(
+        titlebar.addEventListener
+        (
             "pointerup",
             () => {
 
@@ -3209,7 +3313,8 @@ appWindows.forEach(
         );
 
 
-        titlebar.addEventListener(
+        titlebar.addEventListener
+        (
             "pointercancel",
             () => {
 
@@ -3236,16 +3341,19 @@ appWindows.forEach(
             );
 
 
-        if (!closeButton) {
+        if (!closeButton) 
+            {
             return;
-        }
+            }
 
 
-        closeButton.addEventListener(
+        closeButton.addEventListener
+        (
             "click",
             () => {
 
-                closeAppWindow(
+                closeAppWindow
+                (
                     windowElement,
                     true
                 );
@@ -3352,11 +3460,9 @@ if (openSettingsButton) {
 
 
 const pianoState = {
-
     bpm: 120,
+    metronomeRunning: false
 
-    metronomeRunning:
-        false
 };
 
 //control really likes c and v
@@ -3389,15 +3495,20 @@ const metronomeStart =
         "metronomeStartStop"
     );
 
-let metronomeTimer =
-    null;
 
-function playMetronomeClick() {
+let metronomeTimer = null;
 
-    if (
+function playMetronomeClick() 
+
+{
+
+    if 
+    (
         !audioContext ||
         !metronomeGain
-    ) {
+    ) 
+    
+    {
         return;
     }
 
@@ -3405,29 +3516,27 @@ function playMetronomeClick() {
     resumeAudio();
 
 
-    const now =
-        audioContext.currentTime;
+    const now = audioContext.currentTime;
 
 
-    const oscillator =
-        audioContext.createOscillator();
-    const gain =
-        audioContext.createGain();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
 
 
     oscillator.type = "sine";
 
 //wooo changeable values!!!
 //if you dont like it, just set the frequency to whatever and delete gains
-// i like 520 set and ramp 700 or something low like 100 or 200
+// nice settings: 920 set and ramp 550 or something low like 100 or 200
     oscillator.frequency.setValueAtTime(
-        520,            
+        920,            
         now
     );
 
 
-    oscillator.frequency.exponentialRampToValueAtTime(
-        150,
+    oscillator.frequency.exponentialRampToValueAtTime
+    (
+        550,
         now + 0.045
     );  
 
@@ -3454,9 +3563,11 @@ function playMetronomeClick() {
 
 function stopMetronome() {
 
-    if (
+    if
+    (
         metronomeTimer !== null
-    ) {
+    )
+     {
 
         clearInterval
         (
@@ -3868,4 +3979,4 @@ if
 
 
 
-// if you read this, comment or say it in review, i'll at least know that someone reads that
+// if you read this, comment or say it in review, i'll at least know that someone read that
