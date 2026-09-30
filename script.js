@@ -859,7 +859,8 @@ function updateBlobTransforms() {
 
 
 function beginImpact() { //pssst, mostly ai gen part
-    if (impactStarted) {
+    if (impactStarted) 
+        {
         return;
     }
 
@@ -1229,8 +1230,7 @@ const pianoSamples =
     );
 
 
-let sampleLoadPromise =
-    null;
+let sampleLoadPromise = null;
 
 
 async function loadPianoSamples() 
@@ -1246,9 +1246,7 @@ async function loadPianoSamples()
 
 
     sampleLoadPromise =
-        (async () => 
-            
-            {
+        (async () => {
             let loaded = 0;
             const total = pianoSamples.length;
 
