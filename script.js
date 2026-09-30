@@ -1,96 +1,39 @@
-const startButton =
-    document.getElementById("startButton");
+const startButton = document.getElementById("startButton");
+const background = document.getElementById("background");
+const welcomeCard = document.getElementById("welcomeCard");
+const pianoUI = document.getElementById("pianoUI");
+const BumWnętrzeKurwa = document.querySelector(".implosion-core");
+const lights = [...document.querySelectorAll(".swiec")];
+const impactFlash = document.getElementById("impactFlash");
+const starCanvas = document.getElementById("starCanvas");
+const impactCanvas = document.getElementById("impactCanvas");
+const particleCanvas = document.getElementById("particleCanvas");
+const nutki = document.getElementById("nutki");
+const pianoArea = document.querySelector(".piano-area");
+const piano = document.getElementById("piano");
+const pianoKeys = document.getElementById("pianoKeys");
+const hideVkeyboard = document.getElementById("hideVkeyboard");
+const popup = document.getElementById("tenpopup");
+const midiYes = document.getElementById("midiTAK");
+const midiNo = document.getElementById("midiNIE");
+const popupYesMidi = document.getElementById("popupMidiTak");
+const midiStatus = document.getElementById("midiStatus");
+const koneksjaChujnia = document.getElementById("connectionIndicator");
+const topTekst = document.getElementById("topTekst");
+const masterVolume = document.getElementById("masterVolume");
+const pianoVolume = document.getElementById("pianoVolume");
+const metronomeVolume = document.getElementById("metronomeVolume");
+const tempoElementarnaCząstkaNig = document.getElementById("tempo");
+const starContext = starCanvas.getContext("2d");
+const impactContext = impactCanvas.getContext("2d");
+const particleContext = particleCanvas.getContext("2d");
+const noteContext = nutki.getContext("2d");
 
-const background =
-    document.getElementById("background");
-
-const welcomeCard =
-    document.getElementById("welcomeCard");
-
-const pianoUI =
-    document.getElementById("pianoUI");
-
-const core =
-    document.querySelector(".implosion-core");
-
-const lights =
-    [...document.querySelectorAll(".swiec")];
-
-const impactFlash =
-    document.getElementById("impactFlash");
-
-const starCanvas =
-    document.getElementById("starCanvas");
-
-const impactCanvas =
-    document.getElementById("impactCanvas");
-
-const particleCanvas =
-    document.getElementById("particleCanvas");
-
-const nutki =
-    document.getElementById("nutki");
-
-const pianoArea =
-    document.querySelector(".piano-area");
-
-const piano =
-    document.getElementById("piano");
-
-const pianoKeys =
-    document.getElementById("pianoKeys");
-
-const hideVkeyboard =
-    document.getElementById("hideVkeyboard");
-
-const popup =
-    document.getElementById("tenpopup");
-
-const midiYes =
-    document.getElementById("midiTAK");
-
-const midiNo =
-    document.getElementById("midiNIE");
-
-const popupYesMidi =
-    document.getElementById("popupMidiTak");
-
-const midiStatus =
-    document.getElementById("midiStatus");
-
-const connectionIndicator =
-    document.getElementById("connectionIndicator"
-    );
-
-const topTekst =
-    document.getElementById("topTekst");
-
-const masterVolume =
-    document.getElementById("masterVolume");
-
-const pianoVolume =
-    document.getElementById("pianoVolume");
-
-const metronomeVolume =
-    document.getElementById("metronomeVolume");
-
-const tempoElement =
-    document.getElementById("tempo");
-
-const starContext =
-    starCanvas.getContext("2d");
-
-const impactContext =
-    impactCanvas.getContext("2d");
-
-const particleContext =
-    particleCanvas.getContext("2d");
-
-
-const noteContext =
-    nutki.getContext("2d");
-
-
+//making consts at start is ai like? damn
+//why tf did i even bother to move them here
+//eh
+//don't care
+//tho i prob should stop
 let audioContext = null;
 let masterGain = null;
 let pianoGain = null;
@@ -110,8 +53,8 @@ let audioInitialized = false;
 
 
 
-const configIntro = {
-
+const configIntro = 
+{
     orbitSize:
         Math.min(
             window.innerWidth,
@@ -129,7 +72,8 @@ const configIntro = {
 
 };
 
-const audioStateMoje = {
+const audioStateMoje = 
+{
     masterVolume: 1,
     pianoVolume: 0.6,
     metronomeVolume: 0.7
@@ -139,9 +83,21 @@ const audioStateMoje = {
 //keyboard to piano wowwww
 
 
+//IMPORTANT NOTE ***************************************
+//IF YOU CAN'T PLAY SOME CHORDS, IT'S AN ISSUE WITH YOUR KEYBOARD
+//or well, many keyboards
+//simply most keyboards use grid based circuits (keyboard matrix), and prevent from pressing some keys at once, for example try typing '8 9 and i' at once, it probably won't work and
+//youll either type first 'i' and then the rest or '89' and then 'i'
+//so you can't press them at once or there may be delay
+//so yeah
+//you can change keyboard map to alt, simply write /* */ around this keyboard map and delete them around alt mapping
+//gah
+//or just play on the lower octave (zxcvbnm,./)
 
-
-const keyboardMap = {
+//zaza
+//zaza plaza
+const keyboardMap = 
+{
 
      q: 57,
     2: 58, 
@@ -185,7 +141,8 @@ const keyboardMap = {
 
 };
 
-const capsKeyboardMap = {
+const capsKeyboardMap = 
+{
     q: 45,  
     2: 46, 
     w: 47, 
@@ -274,7 +231,91 @@ const capsKeyboardMap = {
     "'": 65
 
 };
+
+
+
+
+alt keyboard settings:
+
+const keyboardMap = 
+{
+    q: 57,
+    w: 59,
+    e: 60,
+    r: 62,
+    t: 64,
+    y: 65,
+    u: 67,
+    i: 69,
+    o: 71,
+    p: 72,
+
+    a: 58,
+    s: 61,
+    d: 63,
+    f: 66,
+    g: 68,
+    h: 70,
+    j: 73,
+    k: 74,
+    l: 75,
+    ";": 76,
+
+    z: 40,
+    x: 41,
+    c: 43,
+    v: 45,
+    b: 47,
+    n: 48,
+    m: 50,
+    ",": 52,
+    ".": 53,
+    "/": 55,
+    "'": 56
+};
+
+const capsKeyboardMap = 
+{
+    q: 45,
+    w: 47,
+    e: 48,
+    r: 50,
+    t: 52,
+    y: 53,
+    u: 55,
+    i: 57,
+    o: 59,
+    p: 60,
+
+    a: 46,
+    s: 49,
+    d: 51,
+    f: 54,
+    g: 56,
+    h: 58,
+    j: 61,
+    k: 62,
+    l: 63,
+    ";": 64,
+
+    z: 28,
+    x: 29,
+    c: 31,
+    v: 33,
+    b: 35,
+    n: 36,
+    m: 38,
+    ",": 40,
+    ".": 41,
+    "/": 43,
+    "'": 44
+};
 */
+
+
+
+
+
 //piano sustain configs
 
 
@@ -282,35 +323,23 @@ let sustainPedalDown =
     false; //pretty selfesxplainatory
 
 
-const keyElements =
-    new Map();
-
-const activeNotes =
-    new Map();
-
-const activeVoices =
-    new Map();
-
-const sustainedNotes =
-    new Map();
+const keyElements = new Map();
+const activeNotes = new Map();
+const pressedKeyboardKeys = new Set();
+const activeVoices = new Map();
+const sustainedNotes = new Map();
 
 
-const NOTE_RELEASE_DURATION =
-    0.32;
-
-const NOTE_RELEASE_QUIET_POINT =
-    0.30;
-
-const MINIMUM_NOTE_DURATION =
-    0.14;
+const NOTE_RELEASE_DURATION = 0.32;
+const NOTE_RELEASE_QUIET_POINT = 0.30;
+const MINIMUM_NOTE_DURATION = 0.14;
 
 
+const FIRST_MIDI_NOTE = 21;
+const LAST_MIDI_NOTE = 108;
 
-const FIRST_MIDI_NOTE =
-    21;
 
-const LAST_MIDI_NOTE =
-    108;
+//and ill add more but im too lazy for now
 
 
 
@@ -346,10 +375,8 @@ const LAST_MIDI_NOTE =
 
 
 
-
-
-
-startButton.addEventListener(
+startButton.addEventListener
+(
     "click",
     async () => {
 
@@ -422,19 +449,20 @@ startButton.addEventListener(
 
 
 
-function initializeAudio() {
+function initializeAudio() 
+{
 
-    if (audioInitialized) {
+    if 
+    (audioInitialized) {
         return;
     }
 
 
-    const AudioContextClass =
-        window.AudioContext ||
-        window.webkitAudioContext;
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
 
-    if (!AudioContextClass) {
+    if 
+    (!AudioContextClass) {
         console.error(
             "error with web audio"
         );
@@ -442,34 +470,24 @@ function initializeAudio() {
     }
 
 
-    audioContext =
-        new AudioContextClass();
+    audioContext = new AudioContextClass();
 
 
-    masterGain =
-        audioContext.createGain();
-    pianoGain =
-        audioContext.createGain();
-    metronomeGain =
-        audioContext.createGain();
+    masterGain = audioContext.createGain();
+    pianoGain = audioContext.createGain();
+    metronomeGain = audioContext.createGain();
 
 
-        pianoGain.connect(
-        masterGain);
-        metronomeGain.connect(
-        masterGain);
+        pianoGain.connect(masterGain);
+        metronomeGain.connect(masterGain);
 
 
-    masterGain.connect(
-        audioContext.destination);
+    masterGain.connect(audioContext.destination);
 
 
     masterGain.gain.value = audioStateMoje.masterVolume;
-
     pianoGain.gain.value = audioStateMoje.pianoVolume;
     metronomeGain.gain.value = audioStateMoje.metronomeVolume;
-
-
     audioInitialized = true;
 }
 
@@ -610,7 +628,7 @@ function easeInCubic(t) {
 function easeInQuint(t) {
     return t * t * t * t * t;
 }
-
+//math meth
 
 function clamp(
     value,
@@ -627,7 +645,8 @@ function clamp(
 
 function updateLights(now) {
 
-    if (impactStarted) {
+    if (impactStarted) 
+    {
         return;
     }
 
@@ -645,9 +664,12 @@ function updateLights(now) {
 
 
     
-    if (
+    if 
+    (
+    
         startMoment === null
-    ) {
+    ) 
+    {
 
         orbitAngle +=
             configIntro.speedStart * deltaTime;
@@ -660,33 +682,32 @@ function updateLights(now) {
 
     const elapsed = now - startMoment;
 
-    if (
+    if 
+    (
         elapsed <=
         configIntro.accelDuration
-    ) {
+    ) 
+    
+    {
 
-        const progress =
-            clamp(
-                elapsed /
-                configIntro.accelDuration,
-                0,
-                1
+        const progress =clamp
+            (
+                elapsed /configIntro.accelDuration, 0, 1
+            
             );
 
 
-        const eased =
-            easeInCubic(
+        const eased =easeInCubic
+        (
                 progress
             );
 
 
-        orbitSpeed =
-            configIntro.speedStart +
+        orbitSpeed =configIntro.speedStart +
             (
                 configIntro.finalSpeed -
                 configIntro.speedStart
-            ) *
-            eased;
+            ) * eased;
 
 
         orbitSkala =
@@ -694,17 +715,14 @@ function updateLights(now) {
 
     } else {
 
-        const collapseElapsed =
-            elapsed - configIntro.accelDuration;
+        const collapseElapsed =elapsed - configIntro.accelDuration;
 
 
         const progress =
             clamp
             
             (
-                collapseElapsed / configIntro.collapseDuration,
-                0,
-                1
+                collapseElapsed / configIntro.collapseDuration, 0, 1
             );
 
 
@@ -871,7 +889,7 @@ function beginImpact() { //pssst, mostly ai gen part
     );
 
 
-    core.style.transition =
+    BumWnętrzeKurwa.style.transition =
         `transform 700ms
          cubic-bezier(
             0.16,
@@ -882,15 +900,15 @@ function beginImpact() { //pssst, mostly ai gen part
         filter 480ms ease-out`;
 
 
-    core.style.transform =
+    BumWnętrzeKurwa.style.transform =
         "scale(16)";
 
 
-    core.style.opacity =
+    BumWnętrzeKurwa.style.opacity =
         "0";
 
 
-    core.style.filter =
+    BumWnętrzeKurwa.style.filter =
         "blur(38px)";
 
 
@@ -911,7 +929,8 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () => {
+        () => 
+        {
 
             impactFlash.style.transition =
                 "opacity 650ms ease-out";
@@ -929,9 +948,10 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () => {
+        () =>
+        {
 
-            core.style.display =
+            BumWnętrzeKurwa.style.display =
                 "none";
 
         },
@@ -942,7 +962,8 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () => {
+        () =>
+        {
 
             background.classList.add(
                 "post-impact"
@@ -964,34 +985,33 @@ function beginImpact() { //pssst, mostly ai gen part
 }
 
 
-function finishIntro() {
-
-    if (introFinished) {
+function finishIntro() 
+{
+    if (introFinished) 
+    {
         return;
     }
 
-    introFinished =
-        true;
+    introFinished = true;
 
 
-    pianoUI.classList.add(
-        "visible"
-    );
+    pianoUI.classList.add("visible");
 
     setTimeout(
-        () => {
+        () => 
+            {
+ 
+            popup.classList.add( 
+                "active" 
+            ); 
 
-            popup.classList.add(
-                "active"
-            );
-
-            popup.setAttribute(
+            popup.setAttribute( 
                 "aria-hidden",
-                "false"
-            );
-
-        },
-
+                "false" 
+            ); 
+ 
+        }, 
+ 
         900
     );
 }
@@ -1030,11 +1050,13 @@ function updateSampleLoader(
         );
 
 
-    if (
+    if 
+    (
         !loader ||
         !percentElement ||
         !bar
-    ) {
+    ) 
+    {
         return;
     }
 
@@ -1046,9 +1068,11 @@ function updateSampleLoader(
         `${percent}%`;
 
 
-    if (
+    if 
+    (
         percent >= 100
-    ) {
+    ) 
+    {
 
         loader.classList.add(
             "complete"
@@ -1062,7 +1086,8 @@ function updateSampleLoader(
 }
 
 
-const sampleNoteNames = [
+const sampleNoteNames = 
+[
     "C",
     "C#",
     "D",
@@ -1083,7 +1108,8 @@ function getSampleFilename(
 ) {
 //aii for tedious tasksss
     const note =
-        sampleNoteNames[
+        sampleNoteNames
+        [
             midi % 12
         ];
 
@@ -1188,19 +1214,15 @@ const pianoSamples =
         {
             length: 88
         },
-        (_, index) => {
+        (_, index) => 
+            {
 
-            const midi =
-                FIRST_MIDI_NOTE +
-                index;
+            const midi = FIRST_MIDI_NOTE + index;
 
 
-            return {
-                midi,
-                file:
-                    getSampleFilename(
-                        midi
-                    ),
+            return 
+            {
+                midi, file: getSampleFilename(midi),
                 buffer: null
             };
         }
@@ -1211,9 +1233,11 @@ let sampleLoadPromise =
     null;
 
 
-async function loadPianoSamples() {
+async function loadPianoSamples() 
+{
 
-    if (sampleLoadPromise) {
+    if (sampleLoadPromise) 
+    {
         return sampleLoadPromise;
     }
 
@@ -1225,11 +1249,8 @@ async function loadPianoSamples() {
         (async () => 
             
             {
-
             let loaded = 0;
-
-            const total =
-                pianoSamples.length;
+            const total = pianoSamples.length;
 
 
             const workerCount =
@@ -1245,7 +1266,8 @@ async function loadPianoSamples() {
 
             async function worker() {
 
-                while (true) {
+                while (true) 
+                    {
 
                     const index =
                         nextIndex++;
@@ -1283,48 +1305,41 @@ async function loadPianoSamples() {
                             );
                         }
 
+                        const arrayBuffer = await response.arrayBuffer();
 
-                        const arrayBuffer =
-                            await response.arrayBuffer();
+                        sample.buffer =  await audioContext.decodeAudioData(arrayBuffer);
 
-
-                        sample.buffer =
-                            await audioContext.decodeAudioData(
-                                arrayBuffer
-                            );
-
-                    } catch 
-
+                    } 
+                    catch 
                     (
                         error
                     ) 
-                    
                     {
 
                         console.error(
-                            `Could not load ${sample.file}.mp3`,
-                            error
-                        );
-
-                    } finally {
-
-                        loaded++;
-
-                        updateSampleLoader(
-                            loaded,
-                            total
-                            
-                        );
-                    }
-                }
-            }
-
-
-            await Promise.all(
+                            `Could not load ${sample.file}.mp3, skill issue`, 
+                            error 
+                        ); 
+ 
+                    } finally 
+                    { 
+ 
+                        loaded++; 
+ 
+                        updateSampleLoader
+                        (
+                            loaded, total
+                        ); 
+                    } 
+                } 
+            } 
+ 
+ 
+            await Promise.all
+            (
                 Array.from(
                     {
-                        length:
-                            workerCount
+                        length: workerCount
                     },
                     () => worker()
                 )
@@ -1341,40 +1356,39 @@ async function loadPianoSamples() {
 }
 
 
-function getNearestPianoSample(
+function getNearestPianoSample
+(
     midi
-) {
+) 
+{
 
-    let nearest =
-        null;
+    let nearest = null;
 
-    let nearestDistance =
-        Infinity;
+    let nearestDistance = Infinity;
 
 
-    for (
-        const sample
-        of pianoSamples
+    for 
+    (
+        const sample of pianoSamples
     ) {
 
-        if (
+        if 
+        (
             !sample.buffer
-        ) {
+        ) 
+        {
             continue;
         }
 
 
-        const distance =
-            Math.abs(
-                sample.midi -
-                midi
-            );
+        const distance = Math.abs(sample.midi -midi);
 
-
-        if (
+        if 
+        (
             distance <
             nearestDistance
-        ) {
+        ) 
+        {
 
             nearest =
                 sample;
@@ -2154,91 +2168,102 @@ function getKeyboardMidi(
 }
 
 
-window.addEventListener(
+window.addEventListener
+(
     "keydown",
-    event => {
+    event => 
+    {
+        const editing =
+            event.target instanceof HTMLTextAreaElement ||
+            event.target instanceof HTMLInputElement ||
+            event.target.isContentEditable;
 
-                if (
-            event.code === "Space") 
+        if 
+        (
+            event.code === "Space"
+        )
+        {
+            sustainPedalDown = true;
+            if (!editing)
             {
-            event.preventDefault();
-
-
-            sustainPedalDown =true; //or not, toogable maybe in future
+                event.preventDefault();
+            }
 
             return;
         }
-
-        if (
-            event.repeat
-        ) {
-            return;
-        }
-
 
         const midi =
             getKeyboardMidi(
                 event
             );
 
-
-        if (
+        if 
+        (
             midi === undefined
-        ) {
+        )
+        {
             return;
         }
+        if 
+        (
+            pressedKeyboardKeys.has
+            (
+                event.code
+            )
+        )
+        {
+            return;
+        }
+        pressedKeyboardKeys.add(event.code);
+        noteOn(midi, 0.82, "keyboard");
 
-
-        event.preventDefault();
-
-
-        noteOn(
-            midi,
-            0.82,
-            "keyboard"
-        );
+        if (!editing)
+        {
+            event.preventDefault();
+        }
     }
 );
 
-
-window.addEventListener(
+window.addEventListener
+(
     "keyup",
-    event => {
+    event => 
+    {
+        const editing =
+            event.target instanceof HTMLTextAreaElement ||
+            event.target instanceof HTMLInputElement ||
+            event.target.isContentEditable;
 
-        if (
+        if 
+        (
             event.code === "Space"
-        ) 
-        {   
-            event.preventDefault();
+        )
+        {
             sustainPedalDown = false;
-            
-            
             releaseSustainedNotes();
 
+            if (!editing)
+            {
+                event.preventDefault();
+            }
             return;
         }
+        const midi = getKeyboardMidi(event);
 
-
-        const midi =
-            getKeyboardMidi(
-                event
-            );
-
-
-        if (
+        if 
+        (
             midi === undefined
-        ) {
+        )
+        {
             return;
         }
+        pressedKeyboardKeys.delete(event.code);
 
-
-        event.preventDefault();
-
-
-        noteOff(
-            midi,
-            "keyboard"
-        );
+        noteOff(midi, "keyboard");
+        if (!editing)
+        {
+            event.preventDefault();
+        }
     }
 );
 
@@ -2526,9 +2551,9 @@ function createCoreExplosion() {
 }
 
 
-function updateImpactParticles(
-    deltaTime
-) {
+function updateImpactParticles (deltaTime) 
+
+{
 
     const width =
         impactCanvas.clientWidth;
@@ -2569,14 +2594,16 @@ function updateImpactParticles(
             deltaTime;
 
         particle.vx *=
-            Math.pow(
+            Math.pow
+            (
                 0.988,
                 deltaTime * 60
             );
 
 
         particle.vy *=
-            Math.pow(
+            Math.pow
+            (
                 0.988,
                 deltaTime * 60
             );
@@ -2586,11 +2613,15 @@ function updateImpactParticles(
             deltaTime;
 
 
-        if (
+        if 
+        (
             particle.life <= 0
-        ) {
+        ) 
+        
+        {
 
-            impactParticles.splice(
+            impactParticles.splice
+            (
                 i,
                 1
             );
@@ -2711,7 +2742,8 @@ function setMidiStatus(
     connected
 ) {
 
-    if (!midiStatus) {
+    if (!midiStatus) 
+    {
         return;
     }
 
@@ -2720,15 +2752,17 @@ function setMidiStatus(
         message;
 
 
-    midiStatus.classList.toggle(
+    midiStatus.classList.toggle
+    (
         "connected",
         connected
     );
 
 
-    if (connectionIndicator) {
+    if (koneksjaChujnia) 
+    {
 
-        connectionIndicator.classList.toggle(
+        koneksjaChujnia.classList.toggle(
             "connected",
             connected
         );
@@ -2796,7 +2830,9 @@ async function requestMIDI() {
 
 function connectMIDI(
     access
-) {
+) 
+
+{
 
     let connected =
         false;
@@ -2842,9 +2878,9 @@ function connectMIDI(
 }
 
 
-function handleMIDIMessage(
-    event
-) {
+function handleMIDIMessage (event) 
+
+{
 
     const data =
         event.data;
@@ -2956,7 +2992,8 @@ function handleMIDIMessage(
 }
 
 
-if (midiYes) {
+if (midiYes) 
+{
 
     midiYes.addEventListener(
         "click",
@@ -2979,7 +3016,8 @@ if (midiYes) {
 }
 
 
-if (midiNo) {
+if (midiNo) 
+{
 
     midiNo.addEventListener(
         "click",
@@ -3010,7 +3048,8 @@ if (midiNo) {
 }
 
 // bind to a keyboard key in the future
-if (hideVkeyboard) {
+if (hideVkeyboard) 
+{
 
     hideVkeyboard.addEventListener(
         "click",
@@ -3081,9 +3120,8 @@ const appWindows =
     ];
 
 
-function openAppWindow(
-    appId
-) {
+function openAppWindow  (appId) 
+{
 
     const windowElement =
         document.getElementById(
@@ -3168,9 +3206,9 @@ function closeAppWindow
 }
 
 
-function focusAppWindow(
-    windowElement
-) {
+function focusAppWindow (windowElement) 
+
+{
 
     appWindows.forEach(
         app => {
@@ -3186,9 +3224,14 @@ function focusAppWindow(
 }
 
 
-//drag race reference?
+//drag race reference? 
+//cuz u know, dragging windows?
+//eh
 
-appWindows.forEach(
+
+appWindows.forEach
+
+(
     windowElement => 
         {
 
@@ -3205,11 +3248,7 @@ appWindows.forEach(
 
 
         let dragging = false;
-
-
         let offsetX = 0;
-
-
         let offsetY = 0;
 
 
@@ -3237,13 +3276,9 @@ appWindows.forEach(
 
 
                 windowElement.style.left = `${rect.left}px`;
-
-
                 windowElement.style.top = `${rect.top}px`;
 
-
                 windowElement.style.transform = "translate(0, 0) scale(1)";
-
 
                 windowElement.classList.add ( "dragging");
 
@@ -3252,20 +3287,14 @@ appWindows.forEach(
                     event.clientX -
                     rect.left;
 
-
                 offsetY =
                     event.clientY -
                     rect.top;
 
 
-                titlebar.setPointerCapture(
-                    event.pointerId
-                );
+                titlebar.setPointerCapture (event.pointerId);
 
-
-                focusAppWindow(
-                    windowElement
-                );
+                focusAppWindow ( windowElement);
             }
         );
 
@@ -3306,7 +3335,8 @@ appWindows.forEach(
                     false;
 
 
-                windowElement.classList.remove(
+                windowElement.classList.remove
+                (
                     "dragging"
                 );
             }
@@ -3363,8 +3393,11 @@ appWindows.forEach(
 );
 
 
-appWindows.forEach(
-    windowElement => {
+appWindows.forEach 
+(
+    windowElement => 
+        
+    {
 
         const minimizeButton =
             windowElement.querySelector(
@@ -3474,7 +3507,7 @@ const metronomeBpm =
 
 const metronomeSlider =
     document.getElementById(
-        "metronomeSlider"
+        "metronome-ślizgacz-kurwijsyn-jr"
     );
 
 
@@ -3527,18 +3560,21 @@ function playMetronomeClick()
 
 //wooo changeable values!!!
 //if you dont like it, just set the frequency to whatever and delete gains
-// nice settings: 920 set and ramp 550 or something low like 100 or 200
+//toy with it however you want
+//ima setting this to a realistic values
     oscillator.frequency.setValueAtTime(
-        920,            
+        1600,            
         now
     );
 
 
     oscillator.frequency.exponentialRampToValueAtTime
     (
-        550,
-        now + 0.045
+        120,
+        now + 0.004
     );  
+    gain.gain.setValueAtTime(1, now);
+    gain.gain.linearRampToValueAtTime(0.001, now + 0.025);
 
     oscillator.connect
     (
@@ -3556,12 +3592,13 @@ function playMetronomeClick()
 
     oscillator.stop
     (
-        now + 0.06
+        now + 0.03
     );
 }
 
 
-function stopMetronome() {
+function stopMetronome() 
+{
 
     if
     (
@@ -3636,32 +3673,36 @@ function updateBPM
         );
 
 
-    if (metronomeBpm) {
-
+    if (metronomeBpm) 
+    {
         metronomeBpm.textContent = pianoState.bpm;
     }
 
 
-    if (metronomeSlider) {
+    if (metronomeSlider) 
+    {
         metronomeSlider.value = pianoState.bpm;
     }
 
 
-    if (tempoElement) {
-        tempoElement.textContent = `${pianoState.bpm} BPM`;
+    if (tempoElementarnaCząstkaNig)
+    {
+        tempoElementarnaCząstkaNig.textContent = `${pianoState.bpm} BPM`;
     }
 
 
-    if (
+    if 
+    (
         pianoState.metronomeRunning
-    ) {
-
+    ) 
+    {
         startMetronome();
     }
 }
 
 
-if (metronomeSlider) {
+if (metronomeSlider) 
+    {
 
     metronomeSlider.addEventListener(
         "input",
@@ -3772,53 +3813,58 @@ function loadAudioSettings() { // used ai to copy paste because im lazy ass
         }
 
 
-        if (
-            Number.isFinite(
+        if 
+        (
+            Number.isFinite
+            (
                 saved.masterVolume
             )
-        ) {
+        ) 
+        {
             audioStateMoje.masterVolume =
                 saved.masterVolume;
         }
 
 
         if (
-            Number.isFinite(
+            Number.isFinite
+            (
                 saved.pianoVolume
             )
-        ) {
+        ) 
+        {
             audioStateMoje.pianoVolume =
                 saved.pianoVolume;
         }
 
 
         if (
-            Number.isFinite(
+            Number.isFinite (
                 saved.metronomeVolume
             )
-        ) {
+        ) 
+        {
             audioStateMoje.metronomeVolume =
                 saved.metronomeVolume;
         }
 
 
-        if (masterVolume) {
-            masterVolume.value =
-                audioStateMoje.masterVolume;
+        if (masterVolume) 
+        {
+            masterVolume.value = audioStateMoje.masterVolume;
         }
 
 
-        if (pianoVolume) {
-
-            pianoVolume.value =
-                audioStateMoje.pianoVolume;
+        if (pianoVolume) 
+        {
+            pianoVolume.value = audioStateMoje.pianoVolume;
         }
 
 
-        if (metronomeVolume) {
+        if (metronomeVolume) 
+            {
 
-            metronomeVolume.value =
-                audioStateMoje.metronomeVolume;
+            metronomeVolume.value = audioStateMoje.metronomeVolume;
         }
 
 
@@ -3875,9 +3921,8 @@ setMidiStatus
 
 //walnąć jakiś gif podczas errorów i ez
 
-function animate(
-    now
-) {
+function animate (now) 
+{
 
     const deltaTime =
         Math.min(
@@ -3913,7 +3958,6 @@ function animate(
 requestAnimationFrame(
     animate
 );
-
 
 
 
@@ -3979,4 +4023,4 @@ if
 
 
 
-// if you read this, comment or say it in review, i'll at least know that someone read that
+// if you read this, comment or say it in review, i'll at least know that someone reads that
