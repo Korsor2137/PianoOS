@@ -930,7 +930,7 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () => 
+        () =>
         {
 
             impactFlash.style.transition =
@@ -949,7 +949,7 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () =>
+        () => 
         {
 
             BumWnętrzeKurwa.style.display =
@@ -963,8 +963,7 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () =>
-        {
+        () => {
 
             background.classList.add(
                 "post-impact"
@@ -986,33 +985,34 @@ function beginImpact() { //pssst, mostly ai gen part
 }
 
 
-function finishIntro() 
-{
-    if (introFinished) 
-    {
+function finishIntro() {
+
+    if (introFinished) {
         return;
     }
 
-    introFinished = true;
+    introFinished =
+        true;
 
 
-    pianoUI.classList.add("visible");
+    pianoUI.classList.add(
+        "visible"
+    );
 
     setTimeout(
-        () => 
-            {
- 
-            popup.classList.add( 
-                "active" 
-            ); 
+        () => {
 
-            popup.setAttribute( 
+            popup.classList.add(
+                "active"
+            );
+
+            popup.setAttribute(
                 "aria-hidden",
-                "false" 
-            ); 
- 
-        }, 
- 
+                "false"
+            );
+
+        },
+
         900
     );
 }
@@ -1051,13 +1051,11 @@ function updateSampleLoader(
         );
 
 
-    if 
-    (
+    if (
         !loader ||
         !percentElement ||
         !bar
-    ) 
-    {
+    ) {
         return;
     }
 
@@ -1069,11 +1067,9 @@ function updateSampleLoader(
         `${percent}%`;
 
 
-    if 
-    (
+    if (
         percent >= 100
-    ) 
-    {
+    ) {
 
         loader.classList.add(
             "complete"
@@ -1087,8 +1083,7 @@ function updateSampleLoader(
 }
 
 
-const sampleNoteNames = 
-[
+const sampleNoteNames = [
     "C",
     "C#",
     "D",
@@ -1109,8 +1104,7 @@ function getSampleFilename(
 ) {
 //aii for tedious tasksss
     const note =
-        sampleNoteNames
-        [
+        sampleNoteNames[
             midi % 12
         ];
 
@@ -1215,15 +1209,19 @@ const pianoSamples =
         {
             length: 88
         },
-        (_, index) => 
-            {
+        (_, index) => {
 
-            const midi = FIRST_MIDI_NOTE + index;
+            const midi =
+                FIRST_MIDI_NOTE +
+                index;
 
 
-            return 
-            {
-                midi, file: getSampleFilename(midi),
+            return {
+                midi,
+                file:
+                    getSampleFilename(
+                        midi
+                    ),
                 buffer: null
             };
         }
@@ -1233,11 +1231,9 @@ const pianoSamples =
 let sampleLoadPromise = null;
 
 
-async function loadPianoSamples() 
-{
+async function loadPianoSamples() {
 
-    if (sampleLoadPromise) 
-    {
+    if (sampleLoadPromise) {
         return sampleLoadPromise;
     }
 
@@ -1246,9 +1242,18 @@ async function loadPianoSamples()
 
 
     sampleLoadPromise =
+<<<<<<< HEAD
+        (async () => 
+            
+            {
+
+=======
         (async () => {
+>>>>>>> e51e556d17d670d42289a79177bbb1193cb2f2a0
             let loaded = 0;
-            const total = pianoSamples.length;
+
+            const total =
+                pianoSamples.length;
 
 
             const workerCount =
@@ -1264,8 +1269,7 @@ async function loadPianoSamples()
 
             async function worker() {
 
-                while (true) 
-                    {
+                while (true) {
 
                     const index =
                         nextIndex++;
@@ -1303,41 +1307,48 @@ async function loadPianoSamples()
                             );
                         }
 
-                        const arrayBuffer = await response.arrayBuffer();
 
-                        sample.buffer =  await audioContext.decodeAudioData(arrayBuffer);
+                        const arrayBuffer =
+                            await response.arrayBuffer();
 
-                    } 
-                    catch 
+
+                        sample.buffer =
+                            await audioContext.decodeAudioData(
+                                arrayBuffer
+                            );
+
+                    } catch 
+
                     (
                         error
                     ) 
+                    
                     {
 
                         console.error(
-                            `Could not load ${sample.file}.mp3, skill issue`, 
-                            error 
-                        ); 
- 
-                    } finally 
-                    { 
- 
-                        loaded++; 
- 
-                        updateSampleLoader
-                        (
-                            loaded, total
-                        ); 
-                    } 
-                } 
-            } 
- 
- 
-            await Promise.all
-            (
+                            `Could not load ${sample.file}.mp3`,
+                            error
+                        );
+
+                    } finally {
+
+                        loaded++;
+
+                        updateSampleLoader(
+                            loaded,
+                            total
+                            
+                        );
+                    }
+                }
+            }
+
+
+            await Promise.all(
                 Array.from(
                     {
-                        length: workerCount
+                        length:
+                            workerCount
                     },
                     () => worker()
                 )
@@ -1354,39 +1365,40 @@ async function loadPianoSamples()
 }
 
 
-function getNearestPianoSample
-(
+function getNearestPianoSample(
     midi
-) 
-{
+) {
 
-    let nearest = null;
+    let nearest =
+        null;
 
-    let nearestDistance = Infinity;
+    let nearestDistance =
+        Infinity;
 
 
-    for 
-    (
-        const sample of pianoSamples
+    for (
+        const sample
+        of pianoSamples
     ) {
 
-        if 
-        (
+        if (
             !sample.buffer
-        ) 
-        {
+        ) {
             continue;
         }
 
 
-        const distance = Math.abs(sample.midi -midi);
+        const distance =
+            Math.abs(
+                sample.midi -
+                midi
+            );
 
-        if 
-        (
+
+        if (
             distance <
             nearestDistance
-        ) 
-        {
+        ) {
 
             nearest =
                 sample;
