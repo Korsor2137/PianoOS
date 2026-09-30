@@ -859,8 +859,7 @@ function updateBlobTransforms() {
 
 
 function beginImpact() { //pssst, mostly ai gen part
-    if (impactStarted) 
-        {
+    if (impactStarted) {
         return;
     }
 
@@ -930,8 +929,7 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () =>
-        {
+        () => {
 
             impactFlash.style.transition =
                 "opacity 650ms ease-out";
@@ -949,8 +947,7 @@ function beginImpact() { //pssst, mostly ai gen part
 
 
     setTimeout(
-        () => 
-        {
+        () => {
 
             BumWnętrzeKurwa.style.display =
                 "none";
@@ -1228,7 +1225,8 @@ const pianoSamples =
     );
 
 
-let sampleLoadPromise = null;
+let sampleLoadPromise =
+    null;
 
 
 async function loadPianoSamples() {
@@ -1242,14 +1240,10 @@ async function loadPianoSamples() {
 
 
     sampleLoadPromise =
-<<<<<<< HEAD
         (async () => 
             
             {
 
-=======
-        (async () => {
->>>>>>> e51e556d17d670d42289a79177bbb1193cb2f2a0
             let loaded = 0;
 
             const total =
