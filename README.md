@@ -4,10 +4,10 @@ A WebOS, which has notepad and metronome apps and fully playable 88 key piano.
 
 ![alt text](image-1.png)
 ![alt text](image.png)
-Also there's a video, but why watch when you can experience.
-Try it here:
+Try it here: https://raw.githack.com/Korsor2137/PianoOS/main/index.html
 
 How to run: Yeah, just click the link. Or download it and then run index.html
+
 
 Features:
 
