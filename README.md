@@ -4,10 +4,10 @@ A WebOS, which has notepad and metronome apps and fully playable 88 key piano.
 
 ![alt text](image-1.png)
 ![alt text](image.png)
+
 Try it here: https://raw.githack.com/Korsor2137/PianoOS/main/index.html
 
 How to run: Yeah, just click the link. Or download it and then run index.html
-
 
 Features:
 
@@ -31,7 +31,7 @@ Features:
 Author's notes:
 And why did I decide to make this? Well, I saw how on the WebOS missions there was a lot of awesome stuff, the same main concept and yet they were all so different. So, since I like piano, decided to implement it :D
 I plan on making it more customizable in the future, such as changing the background color, or maybe the whole stylistic, making the top right buttons actually work instead of just being a decoration, adding maybe a few piano sounds, and of course more apps so it actually feels like an actual OS. Also, notice a little reference at the title screen?
-Edit: This is slighlty updated readme, but most things remain the same. Fixed many, many bugs, rewritten css and most of js, so it's not 'ai'and made changes to metronome and much much more, I'm to lazy to 
+Edit: This is slighlty updated readme, but most things remain the same. Fixed many, many bugs, rewritten css and js, so it's not 'ai'and made changes to metronome and much much more, I'm to lazy to 
 write everything down.
 Also, playing still dre is even more easy now!
 
